@@ -1,7 +1,7 @@
 {
   "scripts": {
     "clean": "rimraf dist/*",
-    "build:css": "mkdir -p dist/css && cp node_modules/@picocss/pico/css/pico.min.css dist/css/",
+    "build:css": "mkdir -p dist/css && cp node_modules/@picocss/pico/css/pico.classless.min.css dist/css/",
     "build:html": "mkdir -p dist && cp src/index.html dist/",
     "build": "run-s build:*",
     "serve": "browser-sync start --server \"dist\" --files \"dist\"",

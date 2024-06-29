@@ -1,15 +1,37 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark" />
-    <link rel="stylesheet" href="css/pico.min.css">
-    <title>Hello world!</title>
-  </head>
-  <body>
-    <main class="container">
-      <h1>Hello world!</h1>
+    <link rel="stylesheet" href="css/pico.classless.min.css">
+    <title>DuckDuckSend</title>
+</head>
+
+<body>
+    <main>
+        <form>
+            <fieldset>
+                <label>
+                    From
+                    <input name="first_name" placeholder="pkfl1sya@duck.com" autocomplete="given-name" />
+                    <small>Your duck alias. If you use an alias that is not owned by the email address you send this
+                        from, email is dropped.</small>
+                </label>
+                <label>
+                    To
+                    <input type="email" name="email" placeholder="support@company.com" autocomplete="email" />
+                    <small>Email recipient, the original email address, not an already duck-reformatted one!</small>
+                </label>
+            </fieldset>
+            <fieldset role="group">
+                <input type="text" name="text" placeholder="support_at_company.com_pkfl1sya@duck.com" readonly />
+                <input type="submit" value="Generate" />
+            </fieldset>
+        </form>
     </main>
-  </body>
+    <footer>...</footer>
+</body>
+
 </html>
