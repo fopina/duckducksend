@@ -1,19 +1,24 @@
 {
   "scripts": {
     "clean": "rimraf dist/*",
-    "build:css": "mkdir -p dist/css && cp node_modules/@picocss/pico/css/pico.classless.min.css dist/css/",
-    "build:html": "mkdir -p dist && cp src/index.html dist/",
+    "build:js": "copyfiles node_modules/alpinejs/dist/cdn.min.js dist/js -V -f && move-file dist/js/cdn.min.js dist/js/alpinejs.min.js && minify src/js/app.js > dist/js/app.js",
+    "build:css": "copyfiles node_modules/@picocss/pico/css/pico.classless.min.css dist -V -u 3",
+    "build:html": "copyfiles 'src/*.html' dist -V -u 1",
     "build": "run-s build:*",
     "serve": "browser-sync start --server \"dist\" --files \"dist\"",
-    "watch:css": "onchange \"src/scss\" -- npm run build:css",
+    "watch:js": "onchange \"src/js\" -- npm run build:js",
     "watch:html": "onchange \"src/*.html\" -- npm run build:html",
     "watch": "run-p serve watch:*"
   },
   "dependencies": {
-    "@picocss/pico": "^2.0.6"
+    "@picocss/pico": "^2.0.6",
+    "alpinejs": "^3.14.1"
   },
   "devDependencies": {
     "browser-sync": "^3.0.2",
+    "copyfiles": "^2.4.1",
+    "minify": "^11.2.1",
+    "move-file-cli": "^3.0.0",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
     "rimraf": "^5.0.7"

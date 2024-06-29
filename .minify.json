@@ -1,0 +1,6 @@
+{
+    "js": {
+        "removeUnusedVariables": false,
+        "mangle": false
+    }
+}

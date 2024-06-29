@@ -7,31 +7,34 @@
     <meta name="color-scheme" content="light dark" />
     <link rel="stylesheet" href="css/pico.classless.min.css">
     <title>DuckDuckSend</title>
+    <script defer src="js/app.js"></script>
+    <script defer src="js/alpinejs.min.js"></script>
 </head>
 
 <body>
-    <main>
-        <form>
+    <main x-data="{ refactoredEmail: '', refactorEmail: () => _refactorEmail($data, $refs)}">
+        <div>
             <fieldset>
                 <label>
                     From
-                    <input name="first_name" placeholder="pkfl1sya@duck.com" autocomplete="given-name" />
+                    <input type="email" placeholder="pkfl1sya@duck.com" x-ref="from" @blur="refactorEmail" />
                     <small>Your duck alias. If you use an alias that is not owned by the email address you send this
                         from, email is dropped.</small>
                 </label>
                 <label>
                     To
-                    <input type="email" name="email" placeholder="support@company.com" autocomplete="email" />
+                    <input x-ref="to" type="email" placeholder="support@company.com" @blur="refactorEmail" />
                     <small>Email recipient, the original email address, not an already duck-reformatted one!</small>
                 </label>
             </fieldset>
             <fieldset role="group">
-                <input type="text" name="text" placeholder="support_at_company.com_pkfl1sya@duck.com" readonly />
-                <input type="submit" value="Generate" />
+                <input type="text" placeholder="support_at_company.com_pkfl1sya@duck.com" :value="refactoredEmail"
+                    readonly />
+                <button @click="refactorEmail">Generate</button>
             </fieldset>
-        </form>
+        </div>
     </main>
-    <footer>...</footer>
+    <footer>https://duckduckgo.com/duckduckgo-help-pages/email-protection/duck-addresses/how-do-i-compose-a-new-email/</footer>
 </body>
 
 </html>
