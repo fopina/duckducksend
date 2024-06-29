@@ -12,25 +12,32 @@
 </head>
 
 <body>
-    <main x-data="{ refactoredEmail: '', refactorEmail: () => _refactorEmail($data, $refs)}">
+    <main x-data="{ refactoredEmail: '', fromError: '', toError: '', refactorEmail: () => _refactorEmail($data, $refs)}">
         <div>
             <fieldset>
                 <label>
                     From
-                    <input type="email" placeholder="pkfl1sya@duck.com" x-ref="from" @blur="refactorEmail" />
-                    <small>Your duck alias. If you use an alias that is not owned by the email address you send this
-                        from, email is dropped.</small>
+                    <input type="text" placeholder="pkfl1sya@duck.com" x-ref="from" @blur="refactorEmail" :aria-invalid="fromError ? 'true' : ''" />
+                    <small><div x-text="fromError"></div>Your @duck.com alias. If you use an alias that is not owned by the email address you send this from, email is dropped.</small>
                 </label>
                 <label>
                     To
-                    <input x-ref="to" type="email" placeholder="support@company.com" @blur="refactorEmail" />
-                    <small>Email recipient, the original email address, not an already duck-reformatted one!</small>
+                    <input x-ref="to" type="email" placeholder="support@company.com" @blur="refactorEmail" :aria-invalid="toError ? 'true' : ''" />
+                    <small><div x-text="toError"></div>Email recipient, the original email address, not an already duck-reformatted one!</small>
                 </label>
             </fieldset>
-            <fieldset role="group">
+            <fieldset>
                 <input type="text" placeholder="support_at_company.com_pkfl1sya@duck.com" :value="refactoredEmail"
                     readonly />
-                <button @click="refactorEmail">Generate</button>
+                    </fieldset>
+                    <fieldset role="group">
+                <button type="reset" @click="refactorEmail">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-reload"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.933 13.041a8 8 0 1 1 -9.925 -8.788c3.899 -1 7.935 1.007 9.425 4.747" /><path d="M20 4v5h-5" /></svg>
+                </button>
+                <div></div>
+                <button @click="copy(refactoredEmail)">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-copy"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg>
+                </button>
             </fieldset>
         </div>
     </main>
