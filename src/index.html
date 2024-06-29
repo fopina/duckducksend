@@ -12,36 +12,86 @@
 </head>
 
 <body>
-    <main x-data="{ refactoredEmail: '', fromError: '', toError: '', refactorEmail: () => _refactorEmail($data, $refs)}">
+    <header>
+        <h3>DuckDuckSend</h3>
+    </header>
+    <main
+        x-data="{ refactoredEmail: '', fromError: '', toError: '', refactorEmail: () => _refactorEmail($data, $refs)}">
         <div>
             <fieldset>
                 <label>
                     From
-                    <input type="text" placeholder="pkfl1sya@duck.com" x-ref="from" @blur="refactorEmail" :aria-invalid="fromError ? 'true' : ''" />
-                    <small><div x-text="fromError"></div>Your @duck.com alias. If you use an alias that is not owned by the email address you send this from, email is dropped.</small>
+                    <input type="text" placeholder="pkfl1sya@duck.com" x-ref="from" @blur="refactorEmail"
+                        :aria-invalid="fromError ? 'true' : ''" />
+                    <small>
+                        <div x-text="fromError"></div>Your @duck.com alias. If you use an alias that is not owned by the
+                        email address you send this from, email is dropped.
+                    </small>
                 </label>
                 <label>
                     To
-                    <input x-ref="to" type="email" placeholder="support@company.com" @blur="refactorEmail" :aria-invalid="toError ? 'true' : ''" />
-                    <small><div x-text="toError"></div>Email recipient, the original email address, not an already duck-reformatted one!</small>
+                    <input x-ref="to" type="email" placeholder="support@company.com" @blur="refactorEmail"
+                        :aria-invalid="toError ? 'true' : ''" />
+                    <small>
+                        <div x-text="toError"></div>Email recipient, the original email address, not an already
+                        duck-reformatted one!
+                    </small>
                 </label>
             </fieldset>
             <fieldset>
                 <input type="text" placeholder="support_at_company.com_pkfl1sya@duck.com" :value="refactoredEmail"
                     readonly />
-                    </fieldset>
-                    <fieldset role="group">
+            </fieldset>
+            <fieldset role="group">
                 <button type="reset" @click="refactorEmail">
-                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-reload"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.933 13.041a8 8 0 1 1 -9.925 -8.788c3.899 -1 7.935 1.007 9.425 4.747" /><path d="M20 4v5h-5" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-reload">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M19.933 13.041a8 8 0 1 1 -9.925 -8.788c3.899 -1 7.935 1.007 9.425 4.747" />
+                        <path d="M20 4v5h-5" />
+                    </svg>
                 </button>
                 <div></div>
                 <button @click="copy(refactoredEmail)">
-                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-copy"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-copy">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
+                        <path
+                            d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
+                    </svg>
                 </button>
             </fieldset>
         </div>
     </main>
-    <footer>https://duckduckgo.com/duckduckgo-help-pages/email-protection/duck-addresses/how-do-i-compose-a-new-email/</footer>
+    <footer>
+        <h4>Why?</h4>
+        <p>
+            Sometimes you have to reach out to customer support via email from the email you signed up with, and you
+            don't have any email from them to <i>reply to</i>.<br />
+            <a target="_blank"
+                href="https://duckduckgo.com/duckduckgo-help-pages/email-protection/duck-addresses/how-do-i-compose-a-new-email/">DuckDuckGo
+                Help: How do I compose a new email?
+            </a> explains how to do it.<br />
+        </p>
+        <p>
+            But manually typing an email is not something we're used to do and it is even worse if we have to refactor
+            it a bit to match these rules.<br />
+        </p>
+        <p>
+            DuckDuckSend allows copy-pasting both our alias and the recipient email and then copy-pasting back the
+            generated email address. <i>Typo free!</i>
+        </p>
+        <p>
+            Stop by <a target="_blank" href="https://github.com/fopina/duckducksend">Github</a> to drop comments, issues
+            or whatever.
+        </p>
+
+    </footer>
+
 </body>
 
 </html>
