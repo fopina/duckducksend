@@ -15,7 +15,7 @@
     "alpinejs": "^3.14.1"
   },
   "devDependencies": {
-    "browser-sync": "^3.0.2",
+    "browser-sync": "^3.0.3",
     "copyfiles": "^2.4.1",
     "minify": "^11.2.1",
     "move-file-cli": "^3.0.0",
